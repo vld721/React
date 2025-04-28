@@ -1,24 +1,20 @@
 import React, { useState, useEffect } from 'react';
 
-// 1. Компонент Container
 const Container = () => {
   const [name, setName] = useState('');
   const [prevName, setPrevName] = useState('');
 
-  // Функция для генерации случайного имени
   const generateRandomName = () => {
     const names = ['Анна', 'Иван', 'Мария', 'Алексей', 'Елена', 'Владимир', 'Ольга', 'Сергей', 'Вика', 'Андрей', 'Вероника'];
     return names[Math.floor(Math.random() * names.length)];
   };
 
-  // Установка случайного имени при первом рендере
   useEffect(() => {
     const initialName = generateRandomName();
     setName(initialName);
     setPrevName(initialName);
   }, []);
 
-  // Обновление имени каждые 10 секунд
   useEffect(() => {
     const intervalId = setInterval(() => {
       setPrevName(name);
@@ -38,7 +34,6 @@ const Container = () => {
   );
 };
 
-// 2. Компонент Greeting
 const Greeting = ({ name, prevName }) => {
   return (
     <div>
@@ -49,11 +44,9 @@ const Greeting = ({ name, prevName }) => {
   );
 };
 
-// 3. Компонент Clock
 const Clock = () => {
   const [time, setTime] = useState(new Date());
 
-  // Обновление времени каждую секунду
   useEffect(() => {
     const intervalId = setInterval(() => {
       setTime(new Date());
@@ -75,7 +68,6 @@ const Clock = () => {
   );
 };
 
-// 4. Компонент Header
 const Header = () => {
   return <h1>Это мой первый React. проект!</h1>;
 };
